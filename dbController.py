@@ -11,7 +11,7 @@ def AddingIntoDB( MedicalData , db):
 
 
 			if MedicalData[key][0] == 's':
-				print "Adding Symptom" + key,
+				print ("Adding Symptom" + key,)
 				db['symptomCollection'].insert_one(TempDict)
 				
 				if 'Causes' in MedicalData[key][1]:
@@ -24,11 +24,11 @@ def AddingIntoDB( MedicalData , db):
 							TempDictForSTD['disease'] = l
 							TempDictForSTD['symptom'] = key
 							db['symptomsToDisease'].insert_one(TempDictForSTD)
-							print "Added"
+							print ("Added")
 
 
 			elif MedicalData[key][0] == 'd':
-				print "Adding Disease" + key,
+				print ("Adding Disease" + key,)
 				db['diseaseCollection'].insert_one(TempDict)
 				if 'Symptoms' in MedicalData[key][1]:
 					
@@ -42,7 +42,7 @@ def AddingIntoDB( MedicalData , db):
 							TempDictForSTD['symptom'] = l
 							TempDictForSTD['disease'] = key
 							db['symptomsToDisease'].insert_one(TempDictForSTD)
-							print "Added"
+							print ("Added")
 
 				if 'Exams and Tests' in MedicalData[key][1]:
 					
@@ -53,18 +53,18 @@ def AddingIntoDB( MedicalData , db):
 						TempDictForDT = {}
 						
 						if  MedicalData[l][0] == 't' :
-							print '%$$%^$^',l,key
+							print ('%$$%^$^',l,key)
 							TempDictForDT['test'] = l
 							TempDictForDT['disease'] = key
 							db['testToDisease'].insert_one(TempDictForDT)
-							print "Added 1"			
+							print ("Added 1")
 
 
 
 
 
 			elif MedicalData[key][0] == 't':
-				print "Adding test" + key,
+				print ("Adding test" + key,)
 				db['testCollection'].insert_one(TempDict)
 				#print key
 					
@@ -79,14 +79,14 @@ def AddingIntoDB( MedicalData , db):
 						TempDictForDT = {}
 						
 						if  MedicalData[l][0] == 'd' :
-							print l,key
+							print (l,key)
 							TempDictForDT['disease'] = l
 							TempDictForDT['test'] = key
 							db['testToDisease'].insert_one(TempDictForDT)
-							print "Added 2" 	
+							print ("Added 2" 	)
 
 			elif MedicalData[key][0] == 'u':
-				print "Adding Disease" + key,
+				print ("Adding Disease" + key,)
 				db['surgeryCollection'].insert_one(TempDict)
 				#print key
 				# 	MedicalData[key][1]['Symptoms'][1] contains refrence list
